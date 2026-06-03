@@ -41,7 +41,7 @@ ORDER BY id;
 
 [1683. Invalid Tweets](https://leetcode.com/problems/invalid-tweets/description/?envType=study-plan-v2&envId=top-sql-50)
 
-```
+```sql
 SELECT tweet_id
 FROM Tweets
 WHERE LENGTH(content) > 15;
@@ -50,6 +50,11 @@ WHERE LENGTH(content) > 15;
 
 ## Basic Joins Problems
 
+[1378. Replace Employee ID With The Unique Identifier](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/description/?envType=study-plan-v2&envId=top-sql-50)
+
+```sql
+
+```
 
 
 
@@ -64,8 +69,15 @@ WHERE LENGTH(content) > 15;
 
 
 
-
+ 
+## Like Operator
 <img width="735" height="318" alt="image" src="https://github.com/user-attachments/assets/f2ee3d4a-1996-4ab5-adbd-e83efdf81705" />
+## Regular Expresion Pattern
+<img width="723" height="273" alt="image" src="https://github.com/user-attachments/assets/3d229441-e655-491d-a878-c5e6438325c7" />
+## Aggregate Function
+<img width="834" height="411" alt="image" src="https://github.com/user-attachments/assets/a8a2b710-df60-46a3-b1e8-394c215c9ed1" />
+
+
 
 
 
