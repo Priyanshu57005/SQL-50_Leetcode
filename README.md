@@ -99,6 +99,25 @@ FROM
 GROUP BY machine_id
 ```
 
+[577. Employee Bonus](https://leetcode.com/problems/employee-bonus/description/?envType=study-plan-v2&envId=top-sql-50)
+```sql
+SELECT name, bonus
+FROM Employee e
+LEFT JOIN Bonus b
+ON e.empId = b.empId
+WHERE bonus < 1000
+OR bonus IS NULL
+```
+
+[1280. Students and Examinations](https://leetcode.com/problems/students-and-examinations/description/?envType=study-plan-v2&envId=top-sql-50)
+```sql
+SELECT a.student_id, a.student_name, b.subject_name, COUNT(c.subject_name) AS attended_exams
+FROM Students a JOIN Subjects b LEFT JOIN Examinations c
+ON a.student_id = c.student_id
+AND b.subject_name = c.subject_name
+GROUP BY 1, 3
+ORDER BY 1, 3 
+```
 
 
 
