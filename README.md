@@ -128,6 +128,35 @@ GROUP BY m.managerId
 HAVING COUNT(m.managerId) >= 5
 ```
 
+[1934. Confirmation Rate](https://leetcode.com/problems/confirmation-rate/description/?envType=study-plan-v2&envId=top-sql-50)
+```sql
+select s.user_id, ifnull(ROUND(sum(action = 'confirmed')/COUNT(*), 2), 0.00) AS confirmation_rate
+from Signups s
+LEFT JOIN Confirmations c
+on s.user_id = c.user_id
+Group by s.user_id
+```
+
+[620. Not Boring Movies](https://leetcode.com/problems/not-boring-movies/description/?envType=study-plan-v2&envId=top-sql-50)
+```sql
+SELECT *
+FROM Cinema
+WHERE id % 2 != 0 AND description != 'boring'
+order by rating DESC
+```
+
+[1251. Average Selling Price](https://leetcode.com/problems/average-selling-price/description/?envType=study-plan-v2&envId=top-sql-50)
+```
+select p.product_id, IFNULL(ROUND(SUM(p.price*u.units)/SUM(u.units), 2), 0) AS average_price
+FROM Prices p
+left join UnitsSold u
+ON p.product_id = u.product_id
+AND u.purchase_date >= p.start_date
+AND u.purchase_date <= p.end_date
+group by p.product_id
+```
+
+
 
 
 
