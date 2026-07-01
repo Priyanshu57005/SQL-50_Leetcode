@@ -156,6 +156,36 @@ AND u.purchase_date <= p.end_date
 group by p.product_id
 ```
 
+[1075. Project Employees I](https://leetcode.com/problems/project-employees-i/description/?envType=study-plan-v2&envId=top-sql-50)
+```
+SELECT p.project_id, ROUND(AVG(e.experience_years ) ,2) AS average_years
+FROM Project p
+LEFT join EMployee e
+ON p.employee_id  = e.employee_id 
+group by p.project_id;
+```
+
+
+[1633. Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/description/?envType=study-plan-v2&envId=top-sql-50)
+```
+select 
+contest_id, 
+round(count(distinct user_id) * 100 /(select count(user_id) from Users) ,2) as percentage
+from  Register
+group by contest_id
+order by percentage desc,contest_id
+```
+
+
+[1211. Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/description/?envType=study-plan-v2&envId=top-sql-50)
+```
+SELECT query_name,
+ROUND(AVG( rating/position ), 2) AS quality,
+ROUND(AVG(CASE WHEN rating<3 then 1 else 0 end) *100, 2) AS poor_query_percentage 
+
+from Queries 
+group by query_name
+```
 
 
 
