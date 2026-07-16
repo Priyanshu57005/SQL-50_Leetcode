@@ -187,6 +187,57 @@ from Queries
 group by query_name
 ```
 
+[1193. Monthly Transactions I](https://leetcode.com/problems/monthly-transactions-i/description/?envType=study-plan-v2&envId=top-sql-50)
+```
+# Write your MySQL query statement below
+SELECT DATE_FORMAT(trans_date, '%Y-%m') AS month,
+country ,
+COUNT(id) AS trans_count,
+SUM(CASE WHEN STATE = 'approved ' THEN 1 ELSE 0 END) AS approved_count,
+SUM(amount) AS trans_total_amount,
+SUM(CASE WHEN STATE = 'approved ' THEN amount ELSE 0 END) AS approved_total_amount
+
+FROM transactions
+GROUP by month, country ;
+```
+
+[1174. Immediate Food Delivery II](https://leetcode.com/problems/immediate-food-delivery-ii/description/?envType=study-plan-v2&envId=top-sql-50)
+```
+# Write your MySQL query statement below
+SELECT 
+    ROUND(SUM(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE 0 END) * 100.0 / COUNT(DISTINCT customer_id), 2) AS immediate_percentage
+FROM Delivery
+WHERE (customer_id, order_date) IN (
+    SELECT customer_id, MIN(order_date) AS first_order_date
+    FROM Delivery
+    GROUP BY customer_id
+);
+```
+
+[550. Game Play Analysis IV](https://leetcode.com/problems/game-play-analysis-iv/description/?envType=study-plan-v2&envId=top-sql-50)
+```
+WITH first_login AS (
+    SELECT
+        player_id,
+        MIN(event_date) AS first_date
+    FROM Activity
+    GROUP BY player_id
+)
+
+SELECT
+    ROUND(
+        COUNT(*) /
+        (SELECT COUNT(*) FROM first_login),
+        2
+    ) AS fraction
+FROM first_login f
+JOIN Activity a
+    ON f.player_id = a.player_id
+WHERE a.event_date = DATE_ADD(f.first_date, INTERVAL 1 DAY);
+```
+
+
+
 
 
 
