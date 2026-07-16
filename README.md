@@ -137,6 +137,8 @@ on s.user_id = c.user_id
 Group by s.user_id
 ```
 
+###Basic Aggregate Functions
+
 [620. Not Boring Movies](https://leetcode.com/problems/not-boring-movies/description/?envType=study-plan-v2&envId=top-sql-50)
 ```sql
 SELECT *
@@ -146,7 +148,7 @@ order by rating DESC
 ```
 
 [1251. Average Selling Price](https://leetcode.com/problems/average-selling-price/description/?envType=study-plan-v2&envId=top-sql-50)
-```
+```sql
 select p.product_id, IFNULL(ROUND(SUM(p.price*u.units)/SUM(u.units), 2), 0) AS average_price
 FROM Prices p
 left join UnitsSold u
@@ -157,7 +159,7 @@ group by p.product_id
 ```
 
 [1075. Project Employees I](https://leetcode.com/problems/project-employees-i/description/?envType=study-plan-v2&envId=top-sql-50)
-```
+```sql
 SELECT p.project_id, ROUND(AVG(e.experience_years ) ,2) AS average_years
 FROM Project p
 LEFT join EMployee e
@@ -167,7 +169,7 @@ group by p.project_id;
 
 
 [1633. Percentage of Users Attended a Contest](https://leetcode.com/problems/percentage-of-users-attended-a-contest/description/?envType=study-plan-v2&envId=top-sql-50)
-```
+```sql
 select 
 contest_id, 
 round(count(distinct user_id) * 100 /(select count(user_id) from Users) ,2) as percentage
@@ -178,7 +180,7 @@ order by percentage desc,contest_id
 
 
 [1211. Queries Quality and Percentage](https://leetcode.com/problems/queries-quality-and-percentage/description/?envType=study-plan-v2&envId=top-sql-50)
-```
+```sql
 SELECT query_name,
 ROUND(AVG( rating/position ), 2) AS quality,
 ROUND(AVG(CASE WHEN rating<3 then 1 else 0 end) *100, 2) AS poor_query_percentage 
@@ -188,7 +190,7 @@ group by query_name
 ```
 
 [1193. Monthly Transactions I](https://leetcode.com/problems/monthly-transactions-i/description/?envType=study-plan-v2&envId=top-sql-50)
-```
+```sql
 # Write your MySQL query statement below
 SELECT DATE_FORMAT(trans_date, '%Y-%m') AS month,
 country ,
@@ -202,7 +204,7 @@ GROUP by month, country ;
 ```
 
 [1174. Immediate Food Delivery II](https://leetcode.com/problems/immediate-food-delivery-ii/description/?envType=study-plan-v2&envId=top-sql-50)
-```
+```sql
 # Write your MySQL query statement below
 SELECT 
     ROUND(SUM(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE 0 END) * 100.0 / COUNT(DISTINCT customer_id), 2) AS immediate_percentage
@@ -215,7 +217,7 @@ WHERE (customer_id, order_date) IN (
 ```
 
 [550. Game Play Analysis IV](https://leetcode.com/problems/game-play-analysis-iv/description/?envType=study-plan-v2&envId=top-sql-50)
-```
+```sql
 WITH first_login AS (
     SELECT
         player_id,
